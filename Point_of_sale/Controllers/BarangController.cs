@@ -35,7 +35,7 @@ namespace Point_of_sale.Controllers
             var barangmodel = new Barang();
             TryUpdateModel(barangmodel);
 
-            using (var s = new market_posEntities())
+            using (var s = new  market_posEntities())
             {
                 s.Barang.Add(barangmodel);
                 s.SaveChanges();

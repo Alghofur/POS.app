@@ -5,7 +5,7 @@
 
 <h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form-group" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <h4>Create a new account.</h4>
@@ -14,7 +14,15 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email , new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
@@ -29,14 +37,7 @@
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.Label("user Roles", new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @*@html.DropDownList("Name")*@
-            @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name, " ")
-        </div>
-    </div>
+    
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

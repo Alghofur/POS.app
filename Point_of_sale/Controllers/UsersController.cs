@@ -11,7 +11,7 @@ namespace Point_of_sale.Controllers
 {
     public class UsersController : Controller
     {
-        // GET: users
+        // GET: Users
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
@@ -21,41 +21,39 @@ namespace Point_of_sale.Controllers
 
                 ViewBag.displayMenu = "No";
 
-                if (isAdminUser())
+                if (IsAdminUser())
                 {
                     ViewBag.displayMenu = "Yes";
                 }
                 return View();
+
             }
             else
             {
-                ViewBag.Name = "Not Logged IN";
+                ViewBag.Name = "Not logged IN";
             }
             return View();
-        }
 
-        private bool isAdminUser()
-        {
-            throw new NotImplementedException();
+
         }
-    }
-    public Boolean IsAdminUser()
-    {
-        if (User.Identity.IsAuthenticated)
+        public Boolean IsAdminUser()
         {
-            var user = User.Identity;
-            ApplicationDbContext context = new ApplicationDbContext();
-            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            var s = UserManager.GetRoles(user.GetUserId());
-            if (s[0].ToString() == "Admin")
+            if (User.Identity.IsAuthenticated)
             {
-                return true;
+                var user = User.Identity;
+                ApplicationDbContext context = new ApplicationDbContext();
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                var s = UserManager.GetRoles(user.GetUserId());
+                if (s[0].ToString() == "Admin")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
-        return false; 
     }
 }

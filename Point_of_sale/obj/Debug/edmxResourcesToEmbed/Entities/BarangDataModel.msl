@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="market_posModelStoreContainer" CdmEntityContainer="market_posEntities">
+    <EntitySetMapping Name="Barang">
+      <EntityTypeMapping TypeName="market_posModel.Barang">
+        <MappingFragment StoreEntitySet="Barang">
+          <ScalarProperty Name="IDBarang" ColumnName="IDBarang" />
+          <ScalarProperty Name="Nama_Barang" ColumnName="Nama_Barang" />
+          <ScalarProperty Name="Kode_Barang" ColumnName="Kode_Barang" />
+          <ScalarProperty Name="Jumlah_Stok" ColumnName="Jumlah_Stok" />
+          <ScalarProperty Name="Harga_Satuan" ColumnName="Harga_Satuan" />
+          <ScalarProperty Name="Tanggal" ColumnName="Tanggal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
