@@ -14,7 +14,7 @@ namespace Point_of_sale.Controllers
         public ActionResult Index()
         {
             List<Barang> r;
-            using (var s = new market_posEntities())
+            using (var s = new market_posEntities_())
             {
                 r = s.Barang.ToList();
             }
@@ -35,7 +35,7 @@ namespace Point_of_sale.Controllers
             var barangmodel = new Barang();
             TryUpdateModel(barangmodel);
 
-            using (var s = new  market_posEntities())
+            using (var s = new  market_posEntities_())
             {
                 s.Barang.Add(barangmodel);
                 s.SaveChanges();
@@ -50,7 +50,7 @@ namespace Point_of_sale.Controllers
             var barangmodel = new Barang();
             TryUpdateModel(barangmodel);
 
-            using (var s = new market_posEntities())
+            using (var s = new market_posEntities_())
             {
                 barangmodel = s.Barang.FirstOrDefault(x => x.IDBarang == idbarang);
             }
@@ -63,7 +63,7 @@ namespace Point_of_sale.Controllers
         {
             var barangmodel = new Barang();
             TryUpdateModel(barangmodel);
-            using (var s = new market_posEntities())
+            using (var s = new market_posEntities_())
             {
                 barangmodel = s.Barang.Where(x => x.IDBarang == idbarang).FirstOrDefault();
             }
@@ -76,7 +76,7 @@ namespace Point_of_sale.Controllers
         {
             var barangmodel = new Barang();
             TryUpdateModel(barangmodel);
-            using (var s = new market_posEntities())
+            using (var s = new market_posEntities_())
             {
                 var m = s.Barang.Where(x => x.IDBarang == idbarang).FirstOrDefault();
                 TryUpdateModel(m);
@@ -92,7 +92,7 @@ namespace Point_of_sale.Controllers
             var barangmodel = new Barang();
             TryUpdateModel(barangmodel);
 
-            using (var r = new market_posEntities())
+            using (var r = new market_posEntities_())
             {
                 barangmodel = r.Barang.FirstOrDefault(x => x.IDBarang == idbarang);
             }
@@ -104,9 +104,9 @@ namespace Point_of_sale.Controllers
         [ActionName("Delete")]
         public ActionResult Delete_Post(string idbarang)
         {
-            var barangmodel = new market_posEntities();
+            var barangmodel = new market_posEntities_();
             TryUpdateModel(barangmodel);
-            using (var s = new market_posEntities())
+            using (var s = new market_posEntities_())
             {
                 var m = s.Barang.Remove(s.Barang.FirstOrDefault(x => x.IDBarang == idbarang));
                 TryUpdateModel(m);
