@@ -12,6 +12,7 @@ namespace Point_of_sale.Controllers
     public class UsersController : Controller
     {
         // GET: Users
+        [Authorize]
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)

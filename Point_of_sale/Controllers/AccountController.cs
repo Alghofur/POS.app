@@ -75,9 +75,9 @@ namespace Point_of_sale.Controllers
                 return View(model);
             }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.UserName , model.Password, model.RememberMe, shouldLockout: false);
+            // This doesn't count login failures towards account lockout    
+            // To enable password failures to trigger account lockout, change to shouldLockout: true    
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -93,12 +93,12 @@ namespace Point_of_sale.Controllers
             }
         }
 
-        //
-        // GET: /Account/VerifyCode
+        //    
+        // GET: /Account/VerifyCode    
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
-            // Require that the user has already logged in via username/password or external login
+            // Require that the user has already logged in via username/password or external login    
             if (!await SignInManager.HasBeenVerifiedAsync())
             {
                 return View("Error");
@@ -136,12 +136,12 @@ namespace Point_of_sale.Controllers
             }
         }
 
-        //
-        // GET: /Account/Register
+
+         //GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
+            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");                     
             return View();
         }
 
@@ -154,7 +154,7 @@ namespace Point_of_sale.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserRoles, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -168,7 +168,7 @@ namespace Point_of_sale.Controllers
                     //Assign Role to user Here       
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
                     //Ends Here     
-                    return RedirectToAction("Index", "Users");
+                    return RedirectToAction("Index", "Dashboard");
                 }
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
 
