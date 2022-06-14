@@ -83,11 +83,22 @@
           </Key>
           <Property Name="LaporanID" Type="int" Nullable="false" />
           <Property Name="Waktu" Type="varchar" MaxLength="50" />
-          <Property Name="ID_Barang" Type="varchar" MaxLength="50" />
+          <Property Name="IDBarang" Type="varchar" MaxLength="150" />
           <Property Name="Kode_Barang" Type="varchar" MaxLength="50" />
           <Property Name="Nama_Barang" Type="varchar" MaxLength="50" />
           <Property Name="Jumlah" Type="varchar" MaxLength="50" />
           <Property Name="Pendapatan" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Transaksi">
+          <Key>
+            <PropertyRef Name="IDBarang" />
+          </Key>
+          <Property Name="IDBarang" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Nama_Barang" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Kode_Barang" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Harga_Satuan" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Jumlah" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Tanggal" Type="date" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -154,6 +165,7 @@
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Barang" EntityType="Self.Barang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_Laporan" EntityType="Self.TB_Laporan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transaksi" EntityType="Self.Transaksi" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -296,15 +308,27 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="Transaksi" EntityType="market_posModel_.Transaksi" />
           <EntitySet Name="TB_Laporan" EntityType="market_posModel_.TB_Laporan" />
         </EntityContainer>
+        <EntityType Name="Transaksi">
+          <Key>
+            <PropertyRef Name="IDBarang" />
+          </Key>
+          <Property Name="IDBarang" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Nama_Barang" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Kode_Barang" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Harga_Satuan" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Jumlah" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tanggal" Type="DateTime" Precision="0" />
+        </EntityType>
         <EntityType Name="TB_Laporan">
           <Key>
             <PropertyRef Name="LaporanID" />
           </Key>
           <Property Name="LaporanID" Type="Int32" Nullable="false" />
           <Property Name="Waktu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ID_Barang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDBarang" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Kode_Barang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Nama_Barang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Jumlah" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -391,6 +415,18 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Transaksi">
+            <EntityTypeMapping TypeName="market_posModel_.Transaksi">
+              <MappingFragment StoreEntitySet="Transaksi">
+                <ScalarProperty Name="Tanggal" ColumnName="Tanggal" />
+                <ScalarProperty Name="Jumlah" ColumnName="Jumlah" />
+                <ScalarProperty Name="Harga_Satuan" ColumnName="Harga_Satuan" />
+                <ScalarProperty Name="Kode_Barang" ColumnName="Kode_Barang" />
+                <ScalarProperty Name="Nama_Barang" ColumnName="Nama_Barang" />
+                <ScalarProperty Name="IDBarang" ColumnName="IDBarang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TB_Laporan">
             <EntityTypeMapping TypeName="market_posModel_.TB_Laporan">
               <MappingFragment StoreEntitySet="TB_Laporan">
@@ -398,7 +434,7 @@
                 <ScalarProperty Name="Jumlah" ColumnName="Jumlah" />
                 <ScalarProperty Name="Nama_Barang" ColumnName="Nama_Barang" />
                 <ScalarProperty Name="Kode_Barang" ColumnName="Kode_Barang" />
-                <ScalarProperty Name="ID_Barang" ColumnName="ID_Barang" />
+                <ScalarProperty Name="IDBarang" ColumnName="IDBarang" />
                 <ScalarProperty Name="Waktu" ColumnName="Waktu" />
                 <ScalarProperty Name="LaporanID" ColumnName="LaporanID" />
               </MappingFragment>

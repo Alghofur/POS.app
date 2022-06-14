@@ -285,3 +285,4 @@ C:\Users\PARYANTO\source\repos\POS.app\Point_of_sale\bin\Microsoft.Owin.Security
 C:\Users\PARYANTO\source\repos\POS.app\Point_of_sale\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\PARYANTO\source\repos\POS.app\Point_of_sale\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\PARYANTO\source\repos\POS.app\Point_of_sale\obj\Debug\Point_of_sale.csproj.CopyComplete
+C:\Users\PARYANTO\source\repos\POS.app\Point_of_sale\bin\Rotativa.dll

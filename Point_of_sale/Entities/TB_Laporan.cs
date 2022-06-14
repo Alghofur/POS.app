@@ -16,7 +16,7 @@ namespace Point_of_sale.Entities
     {
         public int LaporanID { get; set; }
         public string Waktu { get; set; }
-        public string ID_Barang { get; set; }
+        public string IDBarang { get; set; }
         public string Kode_Barang { get; set; }
         public string Nama_Barang { get; set; }
         public string Jumlah { get; set; }

@@ -31,6 +31,7 @@ namespace Point_of_sale.Entities
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Barang> Barang { get; set; }
+        public virtual DbSet<Transaksi> Transaksi { get; set; }
         public virtual DbSet<TB_Laporan> TB_Laporan { get; set; }
     }
 }

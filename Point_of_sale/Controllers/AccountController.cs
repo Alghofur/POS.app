@@ -74,6 +74,7 @@ namespace Point_of_sale.Controllers
             {
                 return View(model);
             }
+            
 
             // This doesn't count login failures towards account lockout    
             // To enable password failures to trigger account lockout, change to shouldLockout: true    
@@ -91,6 +92,7 @@ namespace Point_of_sale.Controllers
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
+            
         }
 
         //    
@@ -116,6 +118,7 @@ namespace Point_of_sale.Controllers
             if (!ModelState.IsValid)
             {
                 return View(model);
+                
             }
 
             // The following code protects for brute force attacks against the two factor codes. 
@@ -168,7 +171,7 @@ namespace Point_of_sale.Controllers
                     //Assign Role to user Here       
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
                     //Ends Here     
-                    return RedirectToAction("Index", "Dashboard");
+                    return RedirectToAction("Login", "Account");
                 }
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
 
@@ -399,7 +402,7 @@ namespace Point_of_sale.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //
@@ -456,7 +459,7 @@ namespace Point_of_sale.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Dashboard");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

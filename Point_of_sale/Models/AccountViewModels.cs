@@ -49,6 +49,10 @@ namespace Point_of_sale.Models
     public class LoginViewModel
     {
         [Required]
+        [Display(Name = "UserRoles")]
+        public string UserRoles { get; set; }
+
+        [Required]
         [Display(Name = "UserName")]
         
         public string UserName{ get; set; }

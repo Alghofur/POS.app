@@ -11,7 +11,7 @@ namespace Point_of_sale.Controllers
     public class BarangController : Controller
     {
         // GET: Barang
-        public ActionResult Index()
+        public ActionResult Barang()
         {
             List<Barang> r;
             using (var s = new market_posEntities_())
@@ -41,7 +41,7 @@ namespace Point_of_sale.Controllers
                 s.SaveChanges();
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Barang");
         }
 
         [HttpGet]
@@ -82,7 +82,7 @@ namespace Point_of_sale.Controllers
                 TryUpdateModel(m);
                 s.SaveChanges();
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Barang");
         }
 
         [HttpGet]
@@ -112,7 +112,7 @@ namespace Point_of_sale.Controllers
                 TryUpdateModel(m);
                 s.SaveChanges();
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Barang");
         }
 
 

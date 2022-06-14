@@ -14,7 +14,8 @@
         <AssociationConnector Association="market_posModel_.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="market_posModel_.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="market_posModel_.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="market_posModel_.TB_Laporan" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="market_posModel_.Transaksi" Width="1.5" PointX="7" PointY="6.875" />
+        <EntityTypeShape EntityType="market_posModel_.TB_Laporan" Width="1.5" PointX="5" PointY="6.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
